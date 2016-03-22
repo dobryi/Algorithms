@@ -21,20 +21,22 @@ def flash_sort(seq):
     seq[0], seq[max_i] = seq[max_i], seq[0]
     moves, j = 0, 0
     k = m - 1
+    print(seq)
     while moves < n - 1:
         while j > (dist_table[k] - 1):
             j += 1
             k = int(cft * (seq[j] - min_a))
+            print(j)
         while j != dist_table[k]:
             k = int(cft * (seq[j] - min_a))
             seq[dist_table[k] - 1], seq[j] = seq[j], seq[dist_table[k] - 1]
             dist_table[k] -= 1
             moves += 1
-    print(seq)
+            print(seq, dist_table)
     return insertion_sort.insertion_sort(seq)
 
 if __name__ == '__main__':
-    test_seq = [random.randint(-20, 20) for _ in range(21)]
+    test_seq = [random.randint(-11, 11) for _ in range(11)]
     print(test_seq)
     sorted_test_seq = flash_sort(test_seq.copy())
     print(sorted_test_seq)
