@@ -2,21 +2,20 @@ import random
 
 
 def quick_sort(seq):
-    n = len(seq)
-    if n == 1:
+    left, right, middle, n = [], [], [], len(seq)
+    if n < 2:
         return seq
-    pivot, pivot_i = seq[0], 0
-    for i in range(1, n):
+    pivot = seq[0]
+    for i in range(n):
         if seq[i] < pivot:
-            seq[pivot_i], seq[i] = seq[i], seq[pivot_i]
-            pivot_i = i
+            left.append(seq[i])
+        elif seq[i] > pivot:
+            right.append(seq[i])
+        else:
+            middle.append(seq[i])
+    return quick_sort(left) + middle + quick_sort(right)
 
-
-    return seq
-
-
-#test_seq = [random.randint(-20, 20) for _ in range(20)]
-test_seq = [9, 6, 3, 4, 10, 8, 2, 7]
+test_seq = [random.randint(-20, 20) for _ in range(20)]
 print(test_seq)
 sorted_test_seq = quick_sort(test_seq.copy())
 print(sorted_test_seq)
