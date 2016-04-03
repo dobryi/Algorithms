@@ -10,11 +10,11 @@ def shell_sort(seq):
             sedgewick.append(8 * pow(2, i) - 6 * pow(2, (i + 1) // 2) + 1)
         if 3 * sedgewick[-1] > n:
             break
-    # print(sedgewick)
+    print(sedgewick)
     for step in reversed(sedgewick):
-        block = seq[::step]
-        insertion_sort(block)
-        seq[::step] = block
+        for i in range(step):
+            if len(seq[i::step]) > 1:
+                seq[i::step] = insertion_sort(seq[i::step])
     return seq
 
 
