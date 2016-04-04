@@ -9,12 +9,15 @@ def bucket_sort(seq, num_of_buckets=10):
     min_a = find_min.find_min(seq)
     for i in range(n):
         seq[i] += abs(min_a)
+    print(seq)
     buckets = [[] for _ in range(num_of_buckets)]
     max_a = find_max.find_max(seq)
     divider = ceil((max_a + 1) / num_of_buckets)
+    print(divider)
     for i in range(n):
         buckets[int(seq[i] // divider)].append(seq[i])
     j = 0
+    print(buckets)
     for bucket_i in range(num_of_buckets):
         if buckets[bucket_i]:
             buckets[bucket_i] = insertion_sort.insertion_sort(buckets[bucket_i])
