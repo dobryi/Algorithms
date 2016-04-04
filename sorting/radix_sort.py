@@ -11,7 +11,7 @@ def radix_sort(seq):
     while divisor / 10 <= max_a:
         blocks = [[] for _ in range(10)]
         for i in range(n):
-            digit = abs(seq[i]) % divisor - abs(seq[i]) % (int(divisor / 10))
+            digit = seq[i] % divisor - seq[i] % (int(divisor / 10))
             while digit >= 10:
                 digit /= 10
             print(seq[i], digit, divisor)
